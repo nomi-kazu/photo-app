@@ -25,6 +25,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :profile, dependent: :destroy
+  has_one_attached :avatar, dependent: :destroy
 
   def prepare_profile
     profile || build_profile
