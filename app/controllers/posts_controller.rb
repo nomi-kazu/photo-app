@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @post = current_user.posts.build
+    @posts = Post.all
   end
 
   def new

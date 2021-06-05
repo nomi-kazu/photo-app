@@ -9,36 +9,36 @@
   justify-content: space-between;
 
   .post-cancel {
-      height: 26px;
-      color: #2F80ED;
-      font-family: Poppins;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 24px;
-      margin-bottom: 40px;
+    height: 26px;
+    color: #2F80ED;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 40px;
   }
 
   &_name {
-      margin-top: 0px;
-      font-family: Poppins;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 24px;
+    margin-top: 0px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .post-btn {
-      height: 26px;
-      font-family: Poppins;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 24px;
-      border: none;
-      background: none;
-      color: #BDBDBD;
-      cursor: pointer;
+    height: 26px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    background: none;
+    color: #BDBDBD;
+    cursor: pointer;
   }
 }
 
@@ -46,19 +46,62 @@
   display: flex;
 
   .post-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 100%;
-      margin-right: 18px;
-      margin-bottom: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right: 18px;
+    margin-bottom: 30px;
   }
 
   .user_name {
-      margin-top: 10px;
-      font-family: Poppins;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 24px;
+    margin-top: 10px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
   }
 }
+
+.post-container {
+  margin-top: 48px;
+  margin-left: 16px;
+  margin-left: 16px;
+}
+
+.post-header-postbtn {
+  margin-bottom: 43px;
+}
+
+.post-header-list {
+  display: flex;
+  margin-top: 43px;
+}
+
+.posts-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 8px;
+}
+
+.post-account {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 0;
+}
+
+.post-time {
+  margin-top: 25px;
+  margin-bottom: 0px;
+  margin-left: -78px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: #9E9E9E;
+} 
