@@ -8,6 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+const { default: axios } = require('axios')
 var jQuery = require('jquery')
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
@@ -21,11 +22,68 @@ window.$ = window.jQuery = jQuery;
 
 //= require jquery
 //= require rails-ujs
+import { csrfToken } from 'rails-ujs'
+
+axios.defaults.headers.common[ 'X-CSRF-Token' ] = csrfToken()
 
 $(function() {
   $('.slick').slick({
       dots: true,
-      // autoplay: true,
-      // autoplaySpeed: 1000,
   });
 }); 
+
+document.addEventListener('DOMContentLoaded', () => {
+  $('.post-card').each(function(){
+    console.log($(this).data('post-id'));
+      const postId = $(this).data('post-id');
+      console.log(postId);
+
+      const handleHeartDisplay = (hasLiked) => {
+        if (hasLiked) {
+          $(`#${postId}.active-heart`).removeClass('hidden')
+        } else {
+          $(`#${postId}.inactive-heart`).removeClass('hidden')
+        }
+      }
+
+      axios.get(`/posts/${postId}/like`)
+        .then((response) => {
+          const hasLiked = response.data.hasLiked
+          handleHeartDisplay(hasLiked)
+        })
+  });
+
+    $('.inactive-heart').on('click', (e) => {
+      e.preventDefault();
+      const postId = $(e.currentTarget).attr('id');
+      console.log(postId);
+      axios.post(`/posts/${postId}/like`)
+        .then((response) => {
+          if (response.data.status === 'ok') {
+            $(`#${postId}.active-heart`).removeClass('hidden')
+            $(`#${postId}.inactive-heart`).addClass('hidden')
+          }
+        })
+        .catch((e) => {
+          window.alert('Error')
+          console.log(e)
+        })
+    })
+
+    $('.active-heart').on('click', (e) => {
+      e.preventDefault();
+      const postId = $(e.currentTarget).attr('id');
+      console.log(postId);
+      axios.delete(`/posts/${postId}/like`)
+        .then((response) => {
+          if (response.data.status === 'ok') {
+            $(`#${postId}.active-heart`).addClass('hidden')
+            $(`#${postId}.inactive-heart`).removeClass('hidden')
+          }
+        })
+        .catch((e) => {
+          window.alert('Error')
+          console.log(e)
+        })
+    })
+})
