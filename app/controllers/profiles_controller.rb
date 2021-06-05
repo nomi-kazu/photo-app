@@ -12,11 +12,9 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_user.prepare_profile
     @profile.assign_attributes(ptofile_params)
-    if @profile.save
-      redirect_to profile_path
-    else
-      render :edit
-    end
+    @profile.save!
+
+    render json: @profile
   end
 
   private
