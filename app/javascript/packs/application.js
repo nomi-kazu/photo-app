@@ -44,13 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      axios.get(`/posts/${postId}/like`)
+      axios.get(`/api/posts/${postId}/like`)
         .then((response) => {
           const hasLiked = response.data.hasLiked
           handleHeartDisplay(hasLiked)
         })
 
-      axios.get(`/posts${postId}/comments`)
+      axios.get(`/api/posts${postId}/comments`)
         .then((response) => {
           const comments = response.data
           comments.forEach((comment) => {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const postId = $(e.currentTarget).attr('id');
       console.log(postId);
-      axios.post(`/posts/${postId}/like`)
+      axios.post(`/api/posts/${postId}/like`)
         .then((response) => {
           if (response.data.status === 'ok') {
             $(`#${postId}.active-heart`).removeClass('hidden')
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const postId = $(e.currentTarget).attr('id');
       console.log(postId);
-      axios.delete(`/posts/${postId}/like`)
+      axios.delete(`/api/posts/${postId}/like`)
         .then((response) => {
           if (response.data.status === 'ok') {
             $(`#${postId}.active-heart`).addClass('hidden')
