@@ -1,7 +1,7 @@
 %p All Post 
 .post-container 
   .post-header 
-    .post-header-postbtn
+    .post-postbtn
       = link_to new_post_path do 
         = image_tag 'camera.png', class: 'post-new'
   - @posts.each do |post|
@@ -11,9 +11,25 @@
           = image_tag current_user.avatar_image, class: 'posts-avatar'
       %p.post-account= current_user.account 
       %p.post-time= time_ago_in_words(post.created_at)
+
     .post-card 
       .post-images 
         - if post.images.attached?
-          - post.images.each do |image|
-            = image_tag image 
-      .post-buttoms 
+          .slick 
+            - post.images.each do |image|
+              = image_tag image, class: 'post-image'
+
+      .post-buttons
+        .post-heart
+          = image_tag 'heart.svg', class: 'like-btn'
+        .post-comment
+          = image_tag 'comment.png', class: 'comment-btn'
+        .post-heart
+          = link_to "https://twitter.com/share?url=#{ request.url }", title: 'Twitter', target: '_blank' do
+            = image_tag 'share.png', class: 'share-btn'
+
+      .post-content 
+        %p.content-item= post.content
+      .post-create-time 
+        %p.create-user= current_user.account
+        %p.create-time= post.created_at.strftime('%Y/%m/%d %H:%M')

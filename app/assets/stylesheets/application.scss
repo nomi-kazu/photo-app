@@ -3,6 +3,8 @@
 @import 'button';
 @import 'profile';
 @import 'post';
+@import 'slick-theme';
+@import "slick";
 
 body {
   height: 100%;
@@ -19,3 +21,13 @@ body {
 a {
   text-decoration: none;
 }
+
+.slick-next {
+  right: 10px !important;
+  z-index: 100;
+}
+
+.slick-prev {
+  left: 10px !important;
+z-index: 100;
+} 
