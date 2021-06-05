@@ -35,9 +35,7 @@ $(function() {
 document.addEventListener('DOMContentLoaded', () => {
   $('.post-card').each(function(){
     console.log($(this).data('post-id'));
-      const postId = $(this).data('post-id');
-      console.log(postId);
-
+    const postId = $(this).data('post-id');
       const handleHeartDisplay = (hasLiked) => {
         if (hasLiked) {
           $(`#${postId}.active-heart`).removeClass('hidden')
@@ -50,6 +48,19 @@ document.addEventListener('DOMContentLoaded', () => {
         .then((response) => {
           const hasLiked = response.data.hasLiked
           handleHeartDisplay(hasLiked)
+        })
+
+      axios.get(`/posts${postId}/comments`)
+        .then((response) => {
+          const comments = response.data
+          comments.forEach((comment) => {
+            $('.comments-container').append(
+              `<div class='comment-card'>
+                  <div class='comment-user-image'></div>
+              </div>
+              <div class="timeline_comment"><p>${comment.content}</p></div>`
+            )
+          })
         })
   });
 
