@@ -16,14 +16,4 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import $ from 'jquery'
-import axios from 'axios'
 
-document.addEventListener('DOMContentLoaded', () => {
-  $('.avatar-image').on('click', () => {
-    axios.get(`/profile`)
-    .then((response) => {
-      console.log(response)
-    })
-  })
-})
