@@ -1,18 +1,21 @@
 # == Schema Information
 #
-# Table name: profiles
+# Table name: posts
 #
 #  id         :bigint           not null, primary key
+#  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint           not null
 #
 # Indexes
 #
-#  index_profiles_on_user_id  (user_id)
+#  index_posts_on_user_id  (user_id)
 #
-class ProfileSerializer < ActiveModel::Serializer
-  attributes :id, :avatar
+require 'test_helper'
 
-  belongs_to :user
+class PostTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
