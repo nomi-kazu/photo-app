@@ -15,8 +15,9 @@
     .post-card 
       .post-images 
         - if post.images.attached?
-          - post.images.each do |image|
-            = image_tag image, class: 'post-image'
+          .slick 
+            - post.images.each do |image|
+              = image_tag image, class: 'post-image'
 
       .post-buttons
         .post-heart
