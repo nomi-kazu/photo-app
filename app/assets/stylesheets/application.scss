@@ -1,0 +1,19 @@
+@import 'variables';
+@import 'form';
+@import 'button';
+
+body {
+  height: 100%;
+  margin: 0;
+  font-size: 1em;
+  color: $text-base-color;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+  margin: 0 16px;
+}
+
+a {
+  text-decoration: none;
+}
