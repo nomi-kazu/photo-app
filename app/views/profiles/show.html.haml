@@ -1,1 +1,20 @@
-profile 
+.container
+  .profilePage
+    = link_to destroy_user_session_path, data: { method: 'delete' }, target: '_blank' do
+      = image_tag 'back.svg', class: 'return-btn'
+    .profilePage_user_account 
+      %p= current_user.account
+    .profilePage_user_image 
+      = link_to edit_profile_path, target: '_blank' do 
+        = image_tag current_user.avatar_image, class: 'avatar-iamge'
+    
+    .profilePage_user_have
+      .profilePage_user_have_item 
+        %p.count 44
+        %p.title posts
+      .profilePage_user_have_item 
+        %p.count 110
+        %p.title Followers
+      .profilePage_user_have_item 
+        %p.count 44
+        %p.title Followings
