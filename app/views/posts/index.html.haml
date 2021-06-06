@@ -4,13 +4,15 @@
     .post-postbtn
       = link_to new_post_path do 
         = image_tag 'camera.png', class: 'post-new'
+    .profile-btn 
+      = link_to 'Profile', profile_path
   - @posts.each do |post|
     .post-card#post-show{data: {post_id: post.id}}
       .post-header-list
         .post-user 
-          = link_to profile_path do
-            = image_tag current_user.avatar_image, class: 'posts-avatar'
-        %p.post-account= current_user.account 
+          = link_to profile_path(post.user) do
+            = image_tag post.user.avatar_image, class: 'posts-avatar'
+        %p.post-account= post.user.account 
         %p.post-time= time_ago_in_words(post.created_at) + ' ago '
 
       .post-card 
@@ -36,5 +38,5 @@
         .post-content 
           %p.content-item= post.content
         .post-create-time 
-          %p.create-user= current_user.account
+          %p.create-user= post.user.account
           %p.create-time= post.created_at.strftime('%Y/%m/%d %H:%M')
