@@ -23,15 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
   axios.get(`/accounts/${accountId}/follows/${followId}`)
     .then((response) => {
       const hasFollowed = response.data.hasFollowed
+      const followerCount = response.data.followerCounts
+      const followingCount = response.data.followingCounts
+      $('#follower_count').text(followerCount)
+      $('#following_count').text(followingCount)
       followDisplay(hasFollowed)
   })
 
   $('.follow-btn').on('click', () => {
     axios.post(`/accounts/${accountId}/follows`)
       .then((response) => {
+      const followerCount = response.data.followerCounts
+      const followingCount = response.data.followingCounts
         if (response.data.status === 'ok') {
           $('.unfollow-btn').removeClass('hidden')
           $('.follow-btn').addClass('hidden')
+          $('#follower_count').text(followerCount)
+          $('#following_count').text(followingCount)
         }
     })
       .catch((e) => {
@@ -43,9 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
   $('.unfollow-btn').on('click', () => {
     axios.post(`/accounts/${accountId}/unfollows`)
       .then((response) => {
+      const followerCount = response.data.followerCounts
+      const followingCount = response.data.followingCounts
         if (response.data.status === 'ok') {
           $('.unfollow-btn').addClass('hidden')
           $('.follow-btn').removeClass('hidden')
+          $('#follower_count').text(followerCount)
+          $('#following_count').text(followingCount)
         }
       })
       .catch((e) => {

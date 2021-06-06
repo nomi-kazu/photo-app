@@ -1,9 +1,6 @@
 import $ from 'jquery'
 import axios from 'axios'
 // require("turbolinks").start()
-import { csrfToken } from 'rails-ujs'
-
-axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 document.addEventListener('turbolinks:load', () => {
   $(function(){
