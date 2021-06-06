@@ -1,9 +1,34 @@
-.container 
-  .comment 
-    .comment-header 
-      = link_to root_path do 
-        = image_tag 'return.png', class: 'return-btn'
-    %p.comment-title Comment
+.post-card-container
+  .post-card#post-show{data: {post_id: post.id}}
+    .post-header-list
+      .post-user 
+        = link_to account_path(post.user) do
+          = image_tag @post.user.avatar_image, class: 'posts-avatar'
+      %p.post-account= @post.user.account 
+      %p.post-time= time_ago_in_words(post.created_at) + ' ago '
 
-  .post 
-    .comments-container{id: @post.id}
+    .post-card-image
+      .post-images 
+        - if @post.images.attached?
+          .slick 
+            - @post.images.each do |image|
+              = image_tag image, class: 'post-image'
+
+        .post-buttons
+          - if user_signed_in?
+            .post-heart.hidden.active-heart{id: post.id}
+              = image_tag 'heart-red.svg', class: 'like-btn'
+            .post-heart.hidden.inactive-heart{id: post.id}
+              = image_tag 'heart.svg', class: 'like-btn'
+          .post-comment
+            = link_to post_comments_path(post.id) do
+              = image_tag 'comment.png', class: 'comment-btn'
+          .post-heart
+            = link_to "https://twitter.com/share?url=#{ request.url }", title: 'Twitter', target: '_blank' do
+              = image_tag 'share.png', class: 'share-btn'
+
+        .post-content 
+          %p.content-item= post.content
+        .post-create-time 
+          %p.create-user= post.user.account
+          %p.create-time= post.created_at.strftime('%Y/%m/%d %H:%M')

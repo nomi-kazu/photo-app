@@ -1,27 +1,25 @@
-%p All Post 
 .post-container 
   .post-header 
     .post-postbtn
       = link_to new_post_path do 
         = image_tag 'camera.png', class: 'post-new'
-    .profile-btn 
-      = link_to 'Profile', profile_path
+    -# .profile-btn 
+    -#   = link_to 'Profile', profile_path
   - @posts.each do |post|
-    = link_to post_path(post) do
-      .post-card#post-show{data: {post_id: post.id}}
-        .post-header-list
-          .post-user 
-            = link_to account_path(post.user) do
-              = image_tag post.user.avatar_image, class: 'posts-avatar'
-          %p.post-account= post.user.account 
-          %p.post-time= time_ago_in_words(post.created_at) + ' ago '
+    .post-card#post-show{data: {post_id: post.id}}
+      .post-header-list
+        .post-user 
+          = link_to account_path(post.user) do
+            = image_tag post.user.avatar_image, class: 'posts-avatar'
+        %p.post-account= post.user.account 
+        %p.post-time= time_ago_in_words(post.created_at) + ' ago '
 
-        .post-card-image 
-          .post-images 
-            - if post.images.attached?
-              .slick 
-                - post.images.each do |image|
-                  = image_tag image, class: 'post-image'
+      .post-card-image
+        .post-images 
+          - if post.images.attached?
+            .slick 
+              - post.images.each do |image|
+                = image_tag image, class: 'post-image'
 
         .post-buttons
           - if user_signed_in?
