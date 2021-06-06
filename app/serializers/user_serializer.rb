@@ -19,7 +19,18 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :avatar
+  include Rails.application.routes.url_helpers
+  
+  attributes :id, :account, :comment_avatar_image
 
   has_one :profile
+  has_many :comments
+
+  def comment_avatar_image
+    if object.avatar_image != 'default_avatar.svg'
+      rails_blob_path(object.avatar_image) 
+    else
+      '/assets/default_avatar.svg'
+    end
+  end
 end

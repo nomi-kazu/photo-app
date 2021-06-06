@@ -4,9 +4,15 @@ Rails.application.routes.draw do
   root to: 'posts#index'
 
   resources :posts do
-    resource :like, only: [:show, :create, :destroy]
     resources :comments, only: [:index, :create, :destroy]
   end
 
   resource :profile, only: [:show, :edit, :update]
+
+  namespace :api, defaults: {format: :json} do 
+    scope '/posts/:post_id' do 
+      resource :like, only: [:show, :create, :destroy]
+      resources :comments, only: [:index, :create, :destroy]
+    end
+  end
 end

@@ -1,1 +1,16 @@
-%p test 
+.container 
+  .comment 
+    .comment-header 
+      = link_to root_path do 
+        = image_tag 'back.svg', class: 'comment-return-btn'
+    %p.comment-title Comment
+
+  .post 
+    .comments-container{id: @post.id}
+
+    .comment-create
+      = image_tag 'comment.png', class: 'create-comment-btn'
+    .comment-text-area
+      = text_area_tag :comment_content, '', class: 'sm'
+      
+= javascript_pack_tag 'comment'
