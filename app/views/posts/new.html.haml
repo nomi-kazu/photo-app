@@ -1,7 +1,7 @@
 .card_container 
   = form_with model: @post, url: posts_path, method: 'post', local: true do |f|
     .post_new_header 
-      = link_to 'Cancel', root_path, class: 'post-cancel'
+      = link_to 'Cancel', posts_path, class: 'post-cancel'
       %p.post_new_header_name Status 
       .post_new_header_postbtn 
         = f.submit 'Post', class: 'post-btn'
