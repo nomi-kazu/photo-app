@@ -3,8 +3,8 @@
     .post-postbtn
       = link_to new_post_path do 
         = image_tag 'camera.png', class: 'post-new'
-    -# .profile-btn 
-    -#   = link_to 'Profile', profile_path
+    .profile-btn 
+      = link_to 'Profile', profile_path
   - @posts.each do |post|
     = link_to post_path(post) do
       .post-card#post-show{data: {post_id: post.id}}

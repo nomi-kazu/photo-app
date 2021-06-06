@@ -1,19 +1,21 @@
-import $ from 'jquery'
-import axios from 'axios'
-// require("turbolinks").start()
+const { default: axios } = require("axios");
+var jQuery = require('jquery')
+import { csrfToken } from 'rails-ujs'
 
-document.addEventListener('turbolinks:load', () => {
-  $(function(){
-    $('.avatar-image').on('click', function(){
+axios.defaults.headers.common[ 'X-CSRF-Token' ] = csrfToken()
+
+document.addEventListener('DOMContentLoaded', () => {
+    $(function(){
+      $('.avatar-image').on('click', function(){
       $('#profile-content').fadeIn();
     });
-    $('.modal-btn-primary').on('click', function(){
+      $('.modal-btn-primary').on('click', function(){
       $('#profile-content').fadeOut();
     });
-    $('#profile-content-close').on('click', function(){
+      $('#profile-content-close').on('click', function(){
       $('#profile-content').fadeOut();
     });
-  });
+    });
 });
 
 window.addEventListener('load', () => {

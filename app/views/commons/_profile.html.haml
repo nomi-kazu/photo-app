@@ -1,11 +1,13 @@
 .container#account-show
   .profilePage
-    = link_to root_path do
-      = image_tag 'return.png', class: 'return-btn'
-    .profile-logout-btn 
-      = link_to 'Logout', destroy_user_session_path, method: :delete
-    .profilePage_user_account 
-      %p= user.account
+    .profilePage_item 
+      .profilePage_return
+        = link_to posts_path do
+          = image_tag 'return.png', class: 'return-btn'
+      .profile-logout-btn 
+        = link_to 'Logout', destroy_user_session_path, method: :delete
+      .profilePage_user_account 
+        %p= user.account
     .profilePage_user_image
       = image_tag user.avatar_image, class: 'avatar-image', id: 'profilePageImage'
       #profile-content
@@ -26,10 +28,12 @@
         %p.title posts
       .profilePage_user_have_item 
         %p.count= user.followers.count
-        %p.title Followers
+        = link_to account_followers_path(user.id) do
+          %p.title Followers
       .profilePage_user_have_item 
         %p.count= user.followings.count
-        %p.title Followings
+        = link_to account_followings_path(user.id) do
+          %p.title Folllowing
 
   - user.posts.each do |post|
     = render 'commons/post', post: post
