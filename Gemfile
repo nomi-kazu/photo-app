@@ -28,6 +28,7 @@ gem 'binding_of_caller'
 gem 'devise'
 gem 'hamlit'
 gem 'jquery-rails'
+gem 'font-awesome-sass'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
