@@ -20,8 +20,6 @@ window.$ = window.jQuery = jQuery;
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-//= require jquery
-//= require rails-ujs
 import { csrfToken } from 'rails-ujs'
 
 axios.defaults.headers.common[ 'X-CSRF-Token' ] = csrfToken()
