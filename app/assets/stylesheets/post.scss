@@ -37,7 +37,7 @@
     line-height: 24px;
     border: none;
     background: none;
-    color: #BDBDBD;
+    color: #2F80ED;
     cursor: pointer;
   }
 }
@@ -66,7 +66,7 @@
 .post-container {
   margin-top: 48px;
   margin-left: 16px;
-  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .post-postbtn {
@@ -105,10 +105,6 @@
   line-height: 18px;
   color: #9E9E9E;
 } 
-
-.post-card {
-
-}
 
 .post-images {
   // display: flex;
@@ -178,4 +174,13 @@
 .slide-image { 
   width: 100%;
   height: 100%;
+} 
+
+.post-logout-btn {
+
+}
+
+.post-card-container {
+    margin-left: 16px;
+    margin-right: 16px;
 } 
