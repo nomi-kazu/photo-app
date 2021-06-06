@@ -37,6 +37,11 @@ class User < ApplicationRecord
   has_many :follower_relationships, foreign_key: 'following_id', class_name: 'Relationship', dependent: :destroy
   has_many :followers, through: :follower_relationships, source: :follower
 
+  validates :account, presence: true, uniqueness: true
+  validates :email, presence: true
+  validates :password, presence: true
+  
+
   def has_liked?(post)
     likes.exists?(post_id: post.id)
   end
