@@ -49,19 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const hasLiked = response.data.hasLiked
           handleHeartDisplay(hasLiked)
         })
-
-      axios.get(`/api/posts${postId}/comments`)
-        .then((response) => {
-          const comments = response.data
-          comments.forEach((comment) => {
-            $('.comments-container').append(
-              `<div class='comment-card'>
-                  <div class='comment-user-image'></div>
-              </div>
-              <div class="timeline_comment"><p>${comment.content}</p></div>`
-            )
-          })
-        })
   });
 
     $('.inactive-heart').on('click', (e) => {

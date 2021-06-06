@@ -27,7 +27,7 @@
             .post-heart.hidden.inactive-heart{id: post.id}
               = image_tag 'heart.svg', class: 'like-btn'
           .post-comment
-            = link_to api_comments_path(post.id) do
+            = link_to post_comments_path(post.id) do
               = image_tag 'comment.png', class: 'comment-btn'
           .post-heart
             = link_to "https://twitter.com/share?url=#{ request.url }", title: 'Twitter', target: '_blank' do
