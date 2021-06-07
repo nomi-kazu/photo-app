@@ -1,0 +1,16 @@
+{
+  "name": "photo app",
+  "description": "This is photoapp",
+  "keywords": [],
+  "website": "",
+  "repository": "https://github.com/nomi-kazu/photo-app",
+  "env": {},
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "buildpacks": [{
+    "url": "heroku/nodejs"
+  }, {
+    "url": "heroku/ruby"
+  }]
+}
